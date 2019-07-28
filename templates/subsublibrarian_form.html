@@ -1,0 +1,29 @@
+<!doctype html>
+
+<html>
+<head>
+<title> Beckett: Subsublibrarian Search </title>
+</head>
+<body>
+<h1>Welcome to the subsublibrarian.</h1>
+<h3>Search through all of Beckett's work here.</h3>
+<p><i>todo: add the poetry, fix the weird invisible results that sometimes show up, add regular expression support.</i></p>
+<form method="POST">
+	<p> Choose which genres you wish to search through. </p>
+	<p><input type="radio" name="genre" value="drama" checked>
+		<label for="drama">Drama</label></p>
+	<p><input type="radio" name="genre" value="novel">
+		<label for="novel">Novels</label></p>
+	<p><input type="radio" name="genre" value="short">
+		<label for="short">Shorts</label></p>
+	<p> Select which languages you wish to search through. </p>
+	<p><input type="radio" name="language" value="en" checked>
+		<label for="en">English</label></p>
+	<p><input type="radio" name="language" value="fr">
+		<label for="fr">French</label></p>
+	<p> And, finally, input what you want to search for. Regexes are not supported yet. </p>
+	<p><input type= "text" name= "searchString"><br></p>
+	<p><input type= "submit"></p>
+</form>
+
+</body>

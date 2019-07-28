@@ -1,0 +1,26 @@
+
+<!doctype html>
+<html>
+<head>
+<title> Subsublibrarian search results</title>
+</head>
+<body>
+<h1> Results </h1>
+
+{% for text in resultDict.keys() %}
+	<hr>
+	<hr>
+	<h3> <a href="http://{{ urllist[loop.index0] }}">{{ text }}</a> has {{ (resultDict[text].keys()|length) }} hits. </h3>
+	{% for result in resultDict[text].keys() %}
+		<h4> Result # {{ result + 1 }}: </h4>
+		{% for line in resultDict[text][result] %}
+			<p>{{ line }}</p>
+		{% endfor %}
+		<hr>
+	{% endfor %}
+{% endfor %}	
+
+</body>
+</html>
+
+

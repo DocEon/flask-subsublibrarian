@@ -1,0 +1,11 @@
+body {
+  background-color:black;
+  color:light-grey;
+}
+
+input[type=text] {
+  width: 200%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}

@@ -1,0 +1,29 @@
+#! /usr/bin/python3
+
+from flask import Flask, request, render_template
+from subsublibrarian import *
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+	return "Hello World!"
+
+@app.route("/subsublibrarian", methods=["GET", "POST"])
+def subsublibrarian():
+	error = None
+	if request.method == "GET":
+		return render_template("subsublibrarian_form.html")
+	elif request.method == "POST":
+		genre = request.form["genre"]
+		langauge = request.form["language"]
+		searchString = request.form["searchString"]
+		resultDict = searchSents(searchString, language, genre)
+		return render_template("searchresult.html", resultDict = resultDict)
+
+#@app.route("/form")
+#def my_form():
+#	return render_template("my-form.html")
+
+if __name__ == "__main__":
+	app.run()
