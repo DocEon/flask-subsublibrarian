@@ -5,6 +5,7 @@ import os
 # from google.cloud import translate
 import nltk
 import string
+import re
 from nltk import word_tokenize, sent_tokenize, Text, FreqDist
 
 # note to self: need to handle How It Is as a novel, which is technically all one sentence. Maybe use lines for sentences there? 
@@ -60,14 +61,20 @@ def searchSents(string, lang, genre):
             sents = dict_to_search[work]["sents_fr"]
         result_index = 0
         for x in range(0, len(sents)):
-            if string in sents[x].lower():
+            if re.search(string, sents[x].lower()) != None:
+            #if string in sents[x].lower():
                 if work not in result_dict.keys():
                     result_dict[work] = {}
                 result_dict[work][result_index] = []
                 if len(sents[x]) > 200:
                     location = sents[x].find(string)
-                    result_dict[work][result_index].append(sents[x][(location-75):(location+75)])
-                else:    
+                    if location < 75:
+                        result_dict[work][result_index].append(sents[x][:(location+100)])
+                    elif location + 100 > len(sents[x]):
+                        result_dict[work][result_index].append(sents[x][(location-100):])
+                    else:
+                        result_dict[work][result_index].append(sents[x][(location-75):(location+75)])
+                else:
                     try:
                         previous_line = sents[x-1]
                     except IndexError:
@@ -83,6 +90,9 @@ def searchSents(string, lang, genre):
         if result_index != 0:
             print("Found " + str(result_index) + " results in " + work + ".")
     return result_dict
+
+# Note: If I want to search with regexes, I need to import re and use re.search(pattern, element.)
+# something like if re.search(searchString, textLine) != None: should work.
 
 def searchRaws(string, lang, genre):
   string = string.lower()

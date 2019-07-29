@@ -3,20 +3,20 @@
 <html>
 <head>
 <title> Subsublibrarian search results</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-<h1> Results </h1>
+<h1> {{ numberOfHits }} results found for "{{ searchString }}" </h1>
 
 {% for text in resultDict.keys() %}
-	<hr>
-	<hr>
+	<hr class="text">
 	<h3> <a href="http://{{ urllist[loop.index0] }}">{{ text }}</a> has {{ (resultDict[text].keys()|length) }} hits. </h3>
 	{% for result in resultDict[text].keys() %}
+		<hr class="result">
 		<h4> Result # {{ result + 1 }}: </h4>
 		{% for line in resultDict[text][result] %}
 			<p>{{ line }}</p>
 		{% endfor %}
-		<hr>
 	{% endfor %}
 {% endfor %}	
 

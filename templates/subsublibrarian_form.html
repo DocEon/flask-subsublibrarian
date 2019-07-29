@@ -3,11 +3,12 @@
 <html>
 <head>
 <title> Beckett: Subsublibrarian Search </title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 <h1>Welcome to the subsublibrarian.</h1>
 <h3>Search through all of Beckett's work here.</h3>
-<p><i>todo: add the poetry, fix the weird invisible results that sometimes show up, add regular expression support.</i></p>
+<p><i>todo: add the poetry. Sorry, J!</i></p>
 <form method="POST">
 	<p> Choose which genres you wish to search through. </p>
 	<p><input type="radio" name="genre" value="drama" checked>
@@ -21,9 +22,11 @@
 		<label for="en">English</label></p>
 	<p><input type="radio" name="language" value="fr">
 		<label for="fr">French</label></p>
-	<p> And, finally, input what you want to search for. Regexes are not supported yet. </p>
+	<p> And, finally, input what you want to search for. <a href="https://www.rexegg.com/regex-quickstart.html">Regexes</a> are supported and on by default. </p>
 	<p><input type= "text" name= "searchString"><br></p>
 	<p><input type= "submit"></p>
 </form>
-
+<hr>
+<p><i>Regexes, or regular expressions, let you do some cool stuff with searching. So, for example, searching for " (m|f)(o|a)ther " will get a hit on anything with " mother " or " father "
+- or " mather " or " fother ", for that matter. See the link above for more fun things you can do with regexes.</i></p>
 </body>
