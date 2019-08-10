@@ -54,6 +54,8 @@ def searchSents(string, lang, genre):
         dict_to_search = novels
     elif genre == "short":
         dict_to_search = shorts
+    elif genre == "all":
+        dict_to_search = {**plays, **novels, **shorts}
     for work in dict_to_search.keys():
         if lang == "en":
             sents = dict_to_search[work]["sents_en"]
@@ -224,7 +226,7 @@ def txtToDict(title_en, genre, getSents=True):
     work["url_fr"] = getURL(path_fr)
     if getSents:
       work["sents_fr"] = sent_tokenize(work["raw_fr"])
-  print("Successfully gobbled up " + title_en + ", AKA " + title_fr)
+#  print("Successfully gobbled up " + title_en + ", AKA " + title_fr)
   file_en.close()
   return work
 
